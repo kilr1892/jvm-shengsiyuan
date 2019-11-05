@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="JUnitGeneratorProjectSettings">
+    <option name="combineGetterAndSetter" value="true" />
+    <option name="outputFilePattern" value="${SOURCEPATH}/../../test/java/test/${PACKAGE}/${FILENAME}" />
+    <option name="selectedTemplateKey" value="JUnit 4" />
+    <option name="vmTemplates">
+      <map>
+        <entry key="JUnit 3" value="######################################################################################## &#10;## &#10;## Available variables: &#10;##         $entryList.methodList - List of method composites &#10;##         $entryList.privateMethodList - List of private method composites &#10;##         $entryList.fieldList - ArrayList of class scope field names &#10;##         $entryList.className - class name &#10;##         $entryList.packageName - package name &#10;##         $today - Todays date in MM/dd/yyyy format &#10;## &#10;##            MethodComposite variables: &#10;##                $method.name - Method Name &#10;##                $method.signature - Full method signature in String form &#10;##                $method.reflectionCode - list of strings representing commented out reflection code to access method (Private Methods) &#10;##                $method.paramNames - List of Strings representing the method's parameters' names &#10;##                $method.paramClasses - List of Strings representing the method's parameters' classes &#10;## &#10;## You can configure the output class name using &quot;testClass&quot; variable below. &#10;## Here are some examples: &#10;## Test${entry.ClassName} - will produce TestSomeClass &#10;## ${entry.className}Test - will produce SomeClassTest &#10;## &#10;######################################################################################## &#10;## &#10;#macro (cap $strIn)$strIn.valueOf($strIn.charAt(0)).toUpperCase()$strIn.substring(1)#end &#10;## Iterate through the list and generate testcase for every entry. &#10;#foreach ($entry in $entryList) &#10;#set( $testClass=&quot;${entry.className}Test&quot;) &#10;## &#10;package test.$entry.packageName; &#10;&#10;import junit.framework.Test; &#10;import junit.framework.TestSuite; &#10;import junit.framework.TestCase; &#10;&#10;/** &#10;* ${entry.className} Tester. &#10;* &#10;* @author &lt;Authors name&gt; &#10;* @since &lt;pre&gt;$today&lt;/pre&gt; &#10;* @version 1.0 &#10;*/ &#10;public class $testClass extends TestCase { &#10;public $testClass(String name) { &#10;super(name); &#10;} &#10;&#10;public void setUp() throws Exception { &#10;super.setUp(); &#10;} &#10;&#10;public void tearDown() throws Exception { &#10;super.tearDown(); &#10;} &#10;&#10;#foreach($method in $entry.methodList) &#10;/** &#10;* &#10;* Method: $method.signature &#10;* &#10;*/ &#10;public void test#cap(${method.name})() throws Exception { &#10;//TODO: Test goes here... &#10;} &#10;&#10;#end &#10;&#10;#foreach($method in $entry.privateMethodList) &#10;/** &#10;* &#10;* Method: $method.signature &#10;* &#10;*/ &#10;public void test#cap(${method.name})() throws Exception { &#10;//TODO: Test goes here... &#10;#foreach($string in $method.reflectionCode) &#10;$string &#10;#end &#10;} &#10;&#10;#end &#10;&#10;public static Test suite() { &#10;return new TestSuite(${testClass}.class); &#10;} &#10;} &#10;#end" />
+        <entry key="JUnit 4" value="######################################################################################## &#10;## &#10;## Available variables: &#10;##         $entryList.methodList - List of method composites &#10;##         $entryList.privateMethodList - List of private method composites &#10;##         $entryList.fieldList - ArrayList of class scope field names &#10;##         $entryList.className - class name &#10;##         $entryList.packageName - package name &#10;##         $today - Todays date in MM/dd/yyyy format &#10;## &#10;##            MethodComposite variables: &#10;##                $method.name - Method Name &#10;##                $method.signature - Full method signature in String form &#10;##                $method.reflectionCode - list of strings representing commented out reflection code to access method (Private Methods) &#10;##                $method.paramNames - List of Strings representing the method's parameters' names &#10;##                $method.paramClasses - List of Strings representing the method's parameters' classes &#10;## &#10;## You can configure the output class name using &quot;testClass&quot; variable below. &#10;## Here are some examples: &#10;## Test${entry.ClassName} - will produce TestSomeClass &#10;## ${entry.className}Test - will produce SomeClassTest &#10;## &#10;######################################################################################## &#10;## &#10;#macro (cap $strIn)$strIn.valueOf($strIn.charAt(0)).toUpperCase()$strIn.substring(1)#end &#10;## Iterate through the list and generate testcase for every entry. &#10;#foreach ($entry in $entryList) &#10;#set( $testClass=&quot;${entry.className}Test&quot;) &#10;## &#10;package test.$entry.packageName; &#10;&#10;import org.junit.Test; &#10;import org.junit.Before; &#10;import org.junit.After; &#10;&#10;/** &#10;* ${entry.className} Tester. &#10;* &#10;* @author Richarc Lee&#10;* @since &lt;pre&gt;$today&lt;/pre&gt; &#10;* @version 1.0 &#10;*/ &#10;public class $testClass { &#10;&#10;@Before&#10;public void before() throws Exception { &#10;} &#10;&#10;@After&#10;public void after() throws Exception { &#10;} &#10;&#10;#foreach($method in $entry.methodList) &#10;/** &#10;* &#10;* Method: $method.signature &#10;* &#10;*/ &#10;@Test&#10;public void test#cap(${method.name})() throws Exception { &#10;//TODO: Test goes here... &#10;} &#10;&#10;#end &#10;&#10;#foreach($method in $entry.privateMethodList) &#10;/** &#10;* &#10;* Method: $method.signature &#10;* &#10;*/ &#10;@Test&#10;public void test#cap(${method.name})() throws Exception { &#10;//TODO: Test goes here... &#10;#foreach($string in $method.reflectionCode) &#10;$string &#10;#end &#10;} &#10;&#10;#end &#10;} &#10;#end" />
+      </map>
+    </option>
+  </component>
+  <component name="MarkdownNavigator.ProfileManager" plain-text-search-scope="Project Files" />
+  <component name="MarkdownProjectSettings" wasCopied="true">
+    <PreviewSettings splitEditorLayout="SPLIT" splitEditorPreview="PREVIEW" useGrayscaleRendering="false" zoomFactor="1.25" maxImageWidth="0" showGitHubPageIfSynced="false" allowBrowsingInPreview="false" synchronizePreviewPosition="true" highlightPreviewType="NONE" highlightFadeOut="5" highlightOnTyping="true" synchronizeSourcePosition="true" verticallyAlignSourceAndPreviewSyncPosition="true" showSearchHighlightsInPreview="false" showSelectionInPreview="true" openRemoteLinks="true" replaceUnicodeEmoji="false" lastLayoutSetsDefault="false">
+      <PanelProvider>
+        <provider providerId="com.vladsch.idea.multimarkdown.editor.swing.html.panel" providerName="Default - Swing" />
+      </PanelProvider>
+    </PreviewSettings>
+    <ParserSettings gitHubSyntaxChange="false" emojiShortcuts="1" emojiImages="0">
+      <PegdownExtensions>
+        <option name="ABBREVIATIONS" value="false" />
+        <option name="ANCHORLINKS" value="true" />
+        <option name="ASIDE" value="false" />
+        <option name="ATXHEADERSPACE" value="true" />
+        <option name="AUTOLINKS" value="true" />
+        <option name="DEFINITIONS" value="false" />
+        <option name="DEFINITION_BREAK_DOUBLE_BLANK_LINE" value="false" />
+        <option name="FENCED_CODE_BLOCKS" value="true" />
+        <option name="FOOTNOTES" value="false" />
+        <option name="HARDWRAPS" value="false" />
+        <option name="HTML_DEEP_PARSER" value="false" />
+        <option name="INSERTED" value="false" />
+        <option name="QUOTES" value="false" />
+        <option name="RELAXEDHRULES" value="true" />
+        <option name="SMARTS" value="false" />
+        <option name="STRIKETHROUGH" value="true" />
+        <option name="SUBSCRIPT" value="false" />
+        <option name="SUPERSCRIPT" value="false" />
+        <option name="SUPPRESS_HTML_BLOCKS" value="false" />
+        <option name="SUPPRESS_INLINE_HTML" value="false" />
+        <option name="TABLES" value="true" />
+        <option name="TASKLISTITEMS" value="true" />
+        <option name="TOC" value="false" />
+        <option name="WIKILINKS" value="false" />
+      </PegdownExtensions>
+      <ParserOptions>
+        <option name="ADMONITION_EXT" value="false" />
+        <option name="ATTRIBUTES_EXT" value="false" />
+        <option name="COMMONMARK_LISTS" value="true" />
+        <option name="DUMMY" value="false" />
+        <option name="EMOJI_SHORTCUTS" value="true" />
+        <option name="ENUMERATED_REFERENCES_EXT" value="false" />
+        <option name="FLEXMARK_FRONT_MATTER" value="false" />
+        <option name="GFM_LOOSE_BLANK_LINE_AFTER_ITEM_PARA" value="false" />
+        <option name="GFM_TABLE_RENDERING" value="true" />
+        <option name="GITBOOK_URL_ENCODING" value="false" />
+        <option name="GITHUB_LISTS" value="false" />
+        <option name="GITHUB_WIKI_LINKS" value="false" />
+        <option name="GITLAB_EXT" value="false" />
+        <option name="GITLAB_MATH_EXT" value="false" />
+        <option name="GITLAB_MERMAID_EXT" value="false" />
+        <option name="HEADER_ID_NON_ASCII_TO_LOWERCASE" value="false" />
+        <option name="HEADER_ID_NO_DUPED_DASHES" value="false" />
+        <option name="JEKYLL_FRONT_MATTER" value="false" />
+        <option name="MACROS_EXT" value="false" />
+        <option name="NO_TEXT_ATTRIBUTES" value="false" />
+        <option name="PARSE_HTML_ANCHOR_ID" value="false" />
+        <option name="PLANTUML_FENCED_CODE" value="false" />
+        <option name="PUML_FENCED_CODE" value="false" />
+        <option name="SIM_TOC_BLANK_LINE_SPACER" value="true" />
+      </ParserOptions>
+    </ParserSettings>
+    <HtmlSettings headerTopEnabled="false" headerBottomEnabled="false" bodyTopEnabled="false" bodyBottomEnabled="false" embedUrlContent="false" addPageHeader="true" embedImages="false" embedHttpImages="false" imageUriSerials="false" addDocTypeHtml="true" noParaTags="false" plantUmlConversion="0" mathConversion="-1">
+      <GeneratorProvider>
+        <provider providerId="com.vladsch.idea.multimarkdown.editor.swing.html.generator" providerName="Default Swing HTML Generator" />
+      </GeneratorProvider>
+      <headerTop />
+      <headerBottom />
+      <bodyTop />
+      <bodyBottom />
+    </HtmlSettings>
+    <CssSettings previewScheme="UI_SCHEME" cssUri="" isCssUriEnabled="false" isCssUriSerial="true" isCssTextEnabled="false" isDynamicPageWidth="true">
+      <StylesheetProvider>
+        <provider providerId="com.vladsch.idea.multimarkdown.editor.swing.html.css" providerName="Default Swing Stylesheet" />
+      </StylesheetProvider>
+      <ScriptProviders />
+      <cssText />
+      <cssUriHistory />
+    </CssSettings>
+    <AnnotatorSettings targetHasSpaces="true" linkCaseMismatch="true" wikiCaseMismatch="true" wikiLinkHasDashes="true" notUnderWikiHome="true" targetNotWikiPageExt="true" notUnderSourceWikiHome="true" targetNameHasAnchor="true" targetPathHasAnchor="true" wikiLinkHasSlash="true" wikiLinkHasSubdir="true" wikiLinkHasOnlyAnchor="true" linkTargetsWikiHasExt="true" linkTargetsWikiHasBadExt="true" notUnderSameRepo="true" targetNotUnderVcs="false" linkNeedsExt="true" linkHasBadExt="true" linkTargetNeedsExt="true" linkTargetHasBadExt="true" wikiLinkNotInWiki="true" imageTargetNotInRaw="true" repoRelativeAcrossVcsRoots="true" multipleWikiTargetsMatch="true" unresolvedLinkReference="true" linkIsIgnored="true" anchorIsIgnored="true" anchorIsUnresolved="true" anchorLineReferenceIsUnresolved="true" anchorLineReferenceFormat="true" anchorHasDuplicates="true" abbreviationDuplicates="true" abbreviationNotUsed="true" attributeIdDuplicateDefinition="true" attributeIdNotUsed="true" footnoteDuplicateDefinition="true" footnoteUnresolved="true" footnoteDuplicates="true" footnoteNotUsed="true" macroDuplicateDefinition="true" macroUnresolved="true" macroDuplicates="true" macroNotUsed="true" referenceDuplicateDefinition="true" referenceUnresolved="true" referenceDuplicates="true" referenceNotUsed="true" referenceUnresolvedNumericId="true" enumRefDuplicateDefinition="true" enumRefUnresolved="true" enumRefDuplicates="true" enumRefNotUsed="true" enumRefLinkUnresolved="true" enumRefLinkDuplicates="true" simTocUpdateNeeded="true" simTocTitleSpaceNeeded="true" />
+    <HtmlExportSettings updateOnSave="false" parentDir="" targetDir="" cssDir="css" scriptDir="js" plainHtml="false" imageDir="" copyLinkedImages="false" imageUniquifyType="0" targetPathType="2" targetExt="" useTargetExt="false" noCssNoScripts="false" useElementStyleAttribute="false" linkToExportedHtml="true" exportOnSettingsChange="true" regenerateOnProjectOpen="false" linkFormatType="HTTP_ABSOLUTE" />
+    <LinkMapSettings>
+      <textMaps />
+    </LinkMapSettings>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
