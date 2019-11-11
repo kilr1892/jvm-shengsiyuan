@@ -20,6 +20,7 @@ interface MyParent5 {
 }
 
 interface MyChild5 extends MyParent5 {
+    // interface 默认是
     //    public static int b = 6;
 //    public static final int b = new Random().nextInt(2);
 //    public static final int b = 5;

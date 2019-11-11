@@ -43,3 +43,4 @@ class Singleton {
         return singleton;
     }
 }
+
