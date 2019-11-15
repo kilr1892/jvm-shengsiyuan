@@ -33,6 +33,5 @@ public class MyTest14 {
         Class<?> clazz2 = String.class;
         // null
         System.out.println(clazz2.getClassLoader());
-
     }
 }
