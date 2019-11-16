@@ -16,7 +16,7 @@ public class MyTest6 {
 }
 /*
  * 1. 连接时的准备阶段
- *    singleton = null counter1=0 counter2=0
+ *    counter1=0 singleton = null  counter2=0
  * 2. 初始化阶段
  *    1.1 给 counter1 赋值 为3
  *    1.2 给 singleton 赋实例 执行了 构造方法
@@ -31,8 +31,10 @@ class Singleton {
     private Singleton() {
         // 这里的是初始化后的值
         counter1++;
+        System.out.println("Singleton中的counter1: " + counter1);
         // 这里的 counter2 是类在连接时的准备阶段赋予的默认值
         counter2++;
+        System.out.println("Singleton中的counter2: " + counter2);
     }
 
     // 这行代码的位置, 可以来理解类的初始化过程
