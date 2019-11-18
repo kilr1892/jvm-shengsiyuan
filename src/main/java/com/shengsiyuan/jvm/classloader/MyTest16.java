@@ -15,7 +15,7 @@ public class MyTest16 extends ClassLoader {
     private final String fileExtension = ".class";
 
     public MyTest16(String classLoaderName) {
-        super();// 将系统类加载器当做该类加载器的父加载器
+        super();// 将系 统类加载器当做该类加载器的父加载器
         this.classLoaderName = classLoaderName;
     }
 
@@ -25,14 +25,10 @@ public class MyTest16 extends ClassLoader {
     }
 
     @Override
-    public String toString() {
-        return "MyTest16{" +
-                "classLoaderName='" + classLoaderName + '\'' +
-                '}';
-    }
-
-    @Override
     protected Class<?> findClass(String className) throws ClassNotFoundException {
+        // 压根没有被执行过
+        System.out.println("findClass invoked: " + className);
+        System.out.println("class loader name: " + this.classLoaderName);
         byte[] data = this.loadClassData(className);
 
         return this.defineClass(className, data, 0, data.length);
@@ -44,8 +40,6 @@ public class MyTest16 extends ClassLoader {
         ByteArrayOutputStream baos = null;
 
         try {
-            // 转为路径
-            this.classLoaderName = this.classLoaderName.replace(".", "/");
             // 加载的文件名
             is = new FileInputStream(new File(name + this.fileExtension));
             baos = new ByteArrayOutputStream();
@@ -80,9 +74,12 @@ public class MyTest16 extends ClassLoader {
         Object object = clazz.newInstance();
 
         System.out.println(object);
+        System.out.println(object.getClass().getClassLoader());
     }
 
     public static void main(String[] args) throws Exception {
+        //com.shengsiyuan.jvm.classloader.MyTest1@4554617c
+        //sun.misc.Launcher$AppClassLoader@18b4aac2
         MyTest16 loader1 = new MyTest16("loader1");
         test(loader1);
     }
